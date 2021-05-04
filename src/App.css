@@ -1,0 +1,160 @@
+::-webkit-scrollbar-button {
+  background-repeat:no-repeat;
+  width:5px;
+  height:0px
+  }
+  
+  ::-webkit-scrollbar-track {
+  background-color:#ecedee
+  }
+  
+  ::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  background-color:#6dc0c8;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover{
+  background-color:#56999f;
+  }
+  
+  ::-webkit-resizer{
+  background-repeat:no-repeat;
+  width:4px;
+  height:0px
+  }
+  
+  ::-webkit-scrollbar{
+  width: 4px;
+  }
+.App {
+  text-align: center;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;      
+  user-select: none; 
+}
+.App-header-top{
+  display:flex;
+  background-color: #282a2c;
+}
+.App-header-top-left{
+  text-align:left;
+  width:50%;
+  height:100%;
+}
+.App-header-top-right{
+  text-align: right;
+  width:50%;
+  height:100%;
+}
+.App-logo {
+  height: 16vmin;
+  pointer-events: none;
+  border-radius: 200px;
+}
+.App-logo-top{
+  height: 5vmin;
+  pointer-events: none;
+  border-radius: 200px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 50s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(20px + 20vmin);
+  color: white;
+}
+.add-to-discord{
+  background-color: #17b3b3;
+  width:550px;
+  height:50px;
+  color:white;
+  font-size:40px;
+  outline:none;
+  cursor:pointer;
+}
+
+.App-link {
+  color: #61dafb;
+}
+.Login{
+   color:white;
+   background-color: #282a2c;
+   height:30px;
+   width:150px;
+   outline:none;
+   cursor:pointer;
+}
+.Donate{
+  cursor: pointer;
+  outline: none;
+  height:50%;
+}
+.Donate:hover::after{
+  content:" Premium";
+}
+.Donate:hover{
+  background-color: aquamarine;
+}
+.Support{
+  cursor: pointer;
+  outline: none;
+  height:50%;
+}
+.Support:hover::after{
+  content:" Техподдержка";
+}
+.Support:hover{
+  background-color: aquamarine;
+}
+.Commands{
+  cursor: pointer;
+  outline: none;
+  height:50%;
+}
+.Commands:hover::after{
+  content:" Команды";
+}
+.Commands:hover{
+  background-color: aquamarine;
+}
+.Documentation{
+  cursor: pointer;
+  outline: none;
+  height:50%;
+}
+.Documentation:hover::after{
+  content:" Документация";
+}
+.Documentation:hover{
+  background-color: aquamarine;
+}
+.server-selected{
+  color:white;
+  background-color: #282a2c;
+  height:30px;
+  width:150px;
+  outline:none;
+  cursor:pointer;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
