@@ -1,0 +1,207 @@
+.Dashboard-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    color: white;
+    display: flex;
+  }
+  .Dashboard-left{
+    border: 4px double black;
+    width:250px;
+    height:600px;
+    margin:25px;
+  }
+  .Dashboard-right{
+    width:1000px;
+    height:600px;
+    margin:25px;
+    overflow-y:auto;
+  }
+  .Dashboard-button{
+      width:100%;
+      height:50px;
+      outline:none;
+      cursor:pointer;
+      background-color: #282c34;
+      border:none;
+      margin-top:5px;
+      color: white;
+      text-align: left;
+  }
+  .Dashboard-button:hover{
+    background-color: rgba(14, 143, 218, 0.801);
+  }
+  .Dashboard-button-custom{
+    width:80%;
+    height:25px;
+    outline:none;
+    cursor:pointer;
+    background-color: #282c34;
+    border:none;
+    color: white;
+    text-align: left;
+    font-size: 10px;
+}
+.main{
+  width:70%;
+}
+.main-top{
+  background-color: rgb(49, 68, 83);
+  text-align: left;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  padding-left:20px;
+
+}
+.main-bottom{
+  background-color: rgb(35, 42, 44);
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.main-block{
+  width:90%;
+  display: flex;
+  padding-top:20px;
+  padding-left:20px;
+}
+.Dashboard-button-custom:hover{
+  background-color: rgba(14, 143, 218, 0.801);
+}
+.input-color{
+  width:179px;
+}
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 52px;
+  height: 27px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: red;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+.main-block-levels{
+  width:70%;
+  margin-top:25px;
+}
+.text-area{
+  width:100%;
+  height:250px;
+  resize:none;
+  outline:none;
+  border: 2px double rgb(100, 100, 250);
+  background-color: rgba(207, 212, 216, 0);
+  color:White;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.text-area-minimal{
+  outline:none;
+  width:40px;
+  height:40px;
+  border-radius: 250px;
+  background-color: rgb(99, 99, 216);
+  text-align: center;
+  
+}
+.text-area-minimal::-webkit-outer-spin-button,
+.text-area-minimal::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+.text-area-minimal::placeholder{
+  color:rgba(255, 255, 255, 0.479);
+}
+.button-krestik{
+  background-color: red;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.loh{
+  border-top: 10px solid;
+  border-right: 10px solid transparent;
+  width:100%;
+}
+.loh-children{
+  border-top: 10px solid;
+  border-right: 10px solid transparent;
+  width:50%;
+  margin-top:-10px;
+}
+.rank-card-top-left{
+  text-align:left;
+  width:50%;
+  height:100%;
+}
+.rank-card-top-right{
+  text-align: right;
+  width:50%;
+  height:100%;
+}
+.left-color-settings-card{
+  width:50%;
+  text-align:left;
+}
+.right-color-settings-card{
+  width:50%;
+  text-align:right;
+}
+.color-settings-card{
+  display: flex;
+  width:100%;
+  margin-top:20px;
+}
+.styles-swatch{
+  padding: 5px;
+  background: #fff;
+  border-radius: 1px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.1);
+  display: inline-block;
+  cursor: pointer;
+
+}
+.styles-color{
+  width: 179px;
+  height: 14px;
+  border-radius:2px;
+}
