@@ -16,10 +16,13 @@ import FormControl from '@material-ui/core/FormControl';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { ChromePicker } from 'react-color';
-import reactCSS from 'reactcss';
-
+import Popover from '@material-ui/core/Popover';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
+  typography: {
+    padding: theme.spacing(2),
+  },
     root: {
       display: 'flex',
       justifyContent: 'center',
@@ -94,6 +97,45 @@ const useStyles = makeStyles((theme) => ({
   }
 
 function Levels(){
+  const [anchorElShrift, setAnchorElShrift] = React.useState(null);
+  const [anchorElFon, setAnchorElFon] = React.useState(null);
+  const [anchorElFonProgress, setAnchorElFonProgress] = React.useState(null);
+  const [anchorElProgress, setAnchorElProgress] = React.useState(null);
+
+  const handleClickShrift = (event) => {
+    setAnchorElShrift(event.currentTarget);
+  };
+  const handleClickFon = (event) => {
+    setAnchorElFon(event.currentTarget);
+  };
+  const handleClickFonProgress = (event) => {
+    setAnchorElFonProgress(event.currentTarget);
+  };
+  const handleClickProgress = (event) => {
+    setAnchorElProgress(event.currentTarget);
+  };
+
+  const handleCloseShrift = () => {
+    setAnchorElShrift(null);
+  };
+  const handleCloseFon = () => {
+    setAnchorElFon(null);
+  };
+  const handleCloseFonProgress = () => {
+    setAnchorElFonProgress(null);
+  };
+  const handleCloseProgress = () => {
+    setAnchorElProgress(null);
+  };
+
+  const openShrift = Boolean(anchorElShrift);
+  const openFon = Boolean(anchorElFon);
+  const openFonProgress = Boolean(anchorElFonProgress);
+  const openProgress = Boolean(anchorElProgress);
+  const idShrift = openShrift ? 'simplhe-popover' : undefined;
+  const idFon = openFon ? 'simplhe-popover' : undefined;
+  const idFonProgress = openFonProgress ? 'simplhe-popover' : undefined;
+  const idProgress = openProgress ? 'simplhe-popover' : undefined;
   const [colorShrift, setColorShrift] = React.useState({
     r: "255",
     g: "255",
@@ -113,60 +155,90 @@ function Levels(){
     b: "253",
     a: "1",
   });
-  const [showColorPickerShrift,setShowColorPickerShrift] = React.useState(false);
-  const [showColorPickerFon,setShowColorPickerFon] = React.useState(false);
-  const [showColorPickerFonProgress,setShowColorPickerFonProgress] = React.useState(false);
-  const [showColorPickerProgress,setShowColorPickerProgress] = React.useState(false);
-  const [val, setVal] = React.useState(0);
   const setNumber = ({ target }) => {
     let { value, min, max } = target;
+    value = value.replace(',', '');
     value = Math.max(Number(min), Math.min(Number(max), Number(value)));
-    setVal(value);
+    target.value = value;
+    console.log("loj")
   };
     const user = "{user}";
     const levelss = "{level}";
     let keys = 0;
     const classes = useStyles();
-  const [chipData, setChipData] = React.useState([]);
+  const [chipDataTextChannels, setChipDataTextChannels] = React.useState([]);
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [chipDataVoiceChannels, setChipDataVoiceChannels] = React.useState([]);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const [chipDataRolles, setChipDataRoles] = React.useState([]);
+
+  const [anchorElTextChannels, setAnchorTextChannels] = React.useState(null);
+
+  const [anchorElVoiceChannels, setAnchorVoiceChannels] = React.useState(null);
+
+  const [anchorElRoles, setAnchorRoles] = React.useState(null);
+
+  const handleClickTextChannels = (event) => {
+    setAnchorTextChannels(event.currentTarget);
+  };
+  const handleClickVoiceChannels = (event) => {
+    setAnchorVoiceChannels(event.currentTarget);
+  };
+  const handleClickRoles = (event) => {
+    setAnchorRoles(event.currentTarget);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleCloseTextChannels = () => {
+    setAnchorTextChannels(null);
   };
-  const toggleClick1 = () => {keys++; setChipData((chips) => [...chips,{key:{keys},label:"ADMINISTRATOR"}])}
-
-  const toggleClick2 = () => {keys++; setChipData((chips) => [...chips,{key:{keys},label:"MODERATOR"}]); console.log(setChipData)}
-
-  const handleDelete = (chipToDelete) => () => {
-    setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
+  const handleCloseVoiceChannels = () => {
+    setAnchorVoiceChannels(null);
   };
-  const styles = reactCSS({
-    'default': {
-      color: {
-        width: '179px',
-        height: '14px',
-        borderRadius: '2px',
-        background: `rgba(${ colorShrift.r }, ${ colorShrift.g }, ${ colorShrift.b }, ${ colorShrift.a })`,
-      },
-      swatch: {
-        padding: '5px',
-        background: '#fff',
-        borderRadius: '1px',
-        boxShadow: '0 0 0 1px rgba(0,0,0,.1)',
-        display: 'inline-block',
-        cursor: 'pointer',
-      },
-      popover: {
-      },
-      cover: {
-      },
-    },
-  });
+  const handleCloseRoles = () => {
+    setAnchorRoles(null);
+  };
+  const toggleClickTextChannels1 = () => {keys++; setChipDataTextChannels((chips) => [...chips,{key:{keys},label:"ADMINISTRATOR"}])}
+
+  const toggleClickTextChannels2 = () => {keys++; setChipDataTextChannels((chips) => [...chips,{key:{keys},label:"MODERATOR"}])}
+
+  const toggleClickVoiceChannels1 = () => {keys++; setChipDataVoiceChannels((chips) => [...chips,{key:{keys},label:"ADMINISTRATOR"}])}
+
+  const toggleClickVoiceChannels2 = () => {keys++; setChipDataVoiceChannels((chips) => [...chips,{key:{keys},label:"MODERATOR"}])}
+
+  const toggleClickRoles1 = () => {keys++; setChipDataRoles((chips) => [...chips,{key:{keys},label:"ADMINISTRATOR"}])}
+
+  const toggleClickRoles2 = () => {keys++; setChipDataRoles((chips) => [...chips,{key:{keys},label:"MODERATOR"}])}
+
+  const handleDeleteTextChannels = (chipToDelete) => () => {
+    setChipDataTextChannels((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
+  };
+  const handleDeleteVoiceChannels = (chipToDelete) => () => {
+    setChipDataVoiceChannels((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
+  };
+  const handleDeleteRoles = (chipToDelete) => () => {
+    setChipDataRoles((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
+  };
+ const [itemReward,setItemReward] = React.useState([])
+ const [id,setid] = React.useState(0);
+   const pushItemReward = () => {
+     setid((set) => set+1)
+     console.log(id);
+     setItemReward((reward) => [...reward,{id:id,content: (<div className="main-block">
+     <div className="App-header-top-left"><input type="number" name="lvlinput" placeholder="LVL" className="text-area-minimal" min="1" max="999" onInput={setNumber}></input></div>
+     <div className="App-header-top-right">
+     <select id="participant" name="countires" className="input-color"><option value="">ADMINISTRATOR</option>
+  <option>MODERATOR</option>
+  <option>GLAVA</option>
+  </select>
+       <button className="button-krestik" onClick={() => removeItemReward(id)}><FontAwesomeIcon icon={["fas", "times"]} color="white" /></button>
+     </div>
+         </div>)}])
+   }
+   const removeItemReward = (ids) => {
+     setItemReward((reward) => reward.filter((reward) => reward.id !== ids));
+     console.log(id)
+
+   }
       return (
           <div>
         <div className="main">
@@ -188,17 +260,17 @@ function Levels(){
            <div>
       <Menu
         id="simple-menu"
-        anchorEl={anchorEl}
+        anchorEl={anchorElTextChannels}
         keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
+        open={Boolean(anchorElTextChannels)}
+        onClose={handleCloseTextChannels}
       >
-        <MenuItem ><input type="checkbox" onClick={toggleClick1}></input>ADMINISTRATOR</MenuItem>
-        <MenuItem ><input type="checkbox" onClick={toggleClick2}></input>MODERATOR</MenuItem>
+        <MenuItem ><input type="checkbox" onClick={toggleClickTextChannels1}></input>ADMINISTRATOR</MenuItem>
+        <MenuItem ><input type="checkbox" onClick={toggleClickTextChannels2}></input>MODERATOR</MenuItem>
       </Menu>
     </div>
     <Paper component="ul" className={classes.root}>
-      {chipData.map((data) => {
+      {chipDataTextChannels.map((data) => {
         let icon;
 
         if (data.label === 'React') {
@@ -210,13 +282,13 @@ function Levels(){
             <Chip
               icon={icon}
               label={data.label}
-              onDelete={data.label === 'React' ? undefined : handleDelete(data)}
+              onDelete={data.label === 'React' ? undefined : handleDeleteTextChannels(data)}
               className={classes.chip}
             />
           </li>
         );
       })}
-      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClickTextChannels}>
         Open Menu
       </Button>
     </Paper>
@@ -230,17 +302,17 @@ function Levels(){
            <div>
       <Menu
         id="simple-menu"
-        anchorEl={anchorEl}
+        anchorEl={anchorElVoiceChannels}
         keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
+        open={Boolean(anchorElVoiceChannels)}
+        onClose={handleCloseVoiceChannels}
       >
-        <MenuItem ><input type="checkbox" onClick={toggleClick1}></input>ADMINISTRATOR</MenuItem>
-        <MenuItem ><input type="checkbox" onClick={toggleClick2}></input>MODERATOR</MenuItem>
+        <MenuItem ><input type="checkbox" onClick={toggleClickVoiceChannels1}></input>ADMINISTRATOR</MenuItem>
+        <MenuItem ><input type="checkbox" onClick={toggleClickVoiceChannels2}></input>MODERATOR</MenuItem>
       </Menu>
     </div>
     <Paper component="ul" className={classes.root}>
-      {chipData.map((data) => {
+      {chipDataVoiceChannels.map((data) => {
         let icon;
 
         if (data.label === 'React') {
@@ -252,13 +324,13 @@ function Levels(){
             <Chip
               icon={icon}
               label={data.label}
-              onDelete={data.label === 'React' ? undefined : handleDelete(data)}
+              onDelete={data.label === 'React' ? undefined : handleDeleteVoiceChannels(data)}
               className={classes.chip}
             />
           </li>
         );
       })}
-      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClickVoiceChannels}>
         Open Menu
       </Button>
     </Paper>
@@ -272,17 +344,17 @@ function Levels(){
            <div>
       <Menu
         id="simple-menu"
-        anchorEl={anchorEl}
+        anchorEl={anchorElRoles}
         keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
+        open={Boolean(anchorElRoles)}
+        onClose={handleCloseRoles}
       >
-        <MenuItem ><input type="checkbox" onClick={toggleClick1}></input>ADMINISTRATOR</MenuItem>
-        <MenuItem ><input type="checkbox" onClick={toggleClick2}></input>MODERATOR</MenuItem>
+        <MenuItem ><input type="checkbox" onClick={toggleClickRoles1}></input>ADMINISTRATOR</MenuItem>
+        <MenuItem ><input type="checkbox" onClick={toggleClickRoles2}></input>MODERATOR</MenuItem>
       </Menu>
     </div>
     <Paper component="ul" className={classes.root}>
-      {chipData.map((data) => {
+      {chipDataRolles.map((data) => {
         let icon;
 
         if (data.label === 'React') {
@@ -294,13 +366,13 @@ function Levels(){
             <Chip
               icon={icon}
               label={data.label}
-              onDelete={data.label === 'React' ? undefined : handleDelete(data)}
+              onDelete={data.label === 'React' ? undefined : handleDeleteRoles(data)}
               className={classes.chip}
             />
           </li>
         );
       })}
-      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClickRoles}>
         Open Menu
       </Button>
     </Paper>
@@ -356,38 +428,13 @@ function Levels(){
         </div>
         <div className="main-block-levels">
          <div className="main-top">НАГРАДЫ ЗА УРОВЕНЬ<button style={{background:"none", outline:"none", cursor:"pointer", border:"none"}} onClick={() => document.getElementById('rewardforlevel').style.display === "none" ? document.getElementById('rewardforlevel').style.display = "block" : document.getElementById('rewardforlevel').style.display = "none"}><FontAwesomeIcon icon={["fas", "angle-down"]} /> Показать/Скрыть</button>
-         <button style={{background:"none", outline:"none", cursor:"pointer", border:"none"}}><span style={{fontStyle:"italic"}}>+</span> Добавить</button></div>
+         <button style={{background:"none", outline:"none", cursor:"pointer", border:"none"}} onClick={pushItemReward}><span style={{fontStyle:"italic"}}>+</span> Добавить</button></div>
          <div className="main-bottom" id="rewardforlevel">
-         <div className="main-block">
-             <div className="App-header-top-left"><input type="number" name="lvlinput" placeholder="LVL" className="text-area-minimal" min="1" max="999" value={val} onChange={setNumber}></input></div>
-             <div className="App-header-top-right">
-             <select id="participant" name="countires" className="input-color"><option value="">ADMINISTRATOR</option>
-<option>MODERATOR</option>
-<option>GLAVA</option>
-</select>
-               <button className="button-krestik"><FontAwesomeIcon icon={["fas", "times"]} color="white" /></button>
-             </div>
-                 </div>
-                 <div className="main-block">
-             <div className="App-header-top-left"><input type="number" name="lvlinput" placeholder="LVL" className="text-area-minimal" min="1" max="999" value={val} onChange={setNumber}></input></div>
-             <div className="App-header-top-right">
-             <select id="participant" name="countires" className="input-color"><option value="">ADMINISTRATOR</option>
-<option>MODERATOR</option>
-<option>GLAVA</option>
-</select>
-               <button className="button-krestik"><FontAwesomeIcon icon={["fas", "times"]} color="white" /></button>
-             </div>
-                 </div>
-                 <div className="main-block">
-             <div className="App-header-top-left"><input type="number" name="lvlinput" placeholder="LVL" className="text-area-minimal" min="1" max="999" value={val} onChange={setNumber}></input></div>
-             <div className="App-header-top-right">
-             <select id="participant" name="countires" className="input-color"><option value="">ADMINISTRATOR</option>
-<option>MODERATOR</option>
-<option>GLAVA</option>
-</select>
-               <button className="button-krestik"><FontAwesomeIcon icon={["fas", "times"]} color="white" /></button>
-             </div>
-                 </div>
+         
+      {itemReward.map(item => (
+        <div key={item.id}>{item.content}</div>
+      ))}
+    
          </div>
         </div>
         <div className="main-block-levels">
@@ -407,14 +454,11 @@ function Levels(){
     </FormControl>
     <div style={{backgroundColor:colorFon,width:"100%",height:"150px",display:"none"}} id="card1">
       <div style={{width:"20%"}}>
-    <svg width="100" height="100">
-  <circle cx="50" cy="50" r="40" stroke-width="4" fill="yellow" />
+    <svg width="100" height="100%" style={{marginTop:"25px"}}>
+  <circle cx="50" cy="50" r="51" stroke-width="100" fill="yellow" />
 </svg>
-<div id = "colorShrift" style={{color:`rgba(${colorShrift.r},${colorShrift.g},${colorShrift.b},${colorShrift.a})`}}>
-       Diiimooon <FontAwesomeIcon icon={["fas", "hotdog"]} /> 908
     </div>
-    </div>
-    <div style={{width:"70%",marginTop: "100px",marginLeft: "20px"}}>
+    <div style={{width:"70%",marginTop: "70px",marginLeft: "20px"}}>
       <div style={{display:"flex"}} id = "colorShrift">
         <div className="rank-card-top-left" style={{color:`rgba(${colorShrift.r},${colorShrift.g},${colorShrift.b},${colorShrift.a})`}}>LVL 35 <FontAwesomeIcon icon={["fas", "comment"]} color="white" /> 1234 <FontAwesomeIcon icon={["fas", "microphone"]}  color="white" /> 34:37:38</div>
          <div className="rank-card-top-right" style={{color:`rgba(${colorShrift.r},${colorShrift.g},${colorShrift.b},${colorShrift.a})`}}> 1024/2048 EXP</div>
@@ -423,18 +467,18 @@ function Levels(){
     <div className="loh" style={{borderTopColor:`rgba(${colorFonProgress.r},${colorFonProgress.g},${colorFonProgress.b},${colorFonProgress.a})`}}>
     <div className="loh-children" style={{borderTopColor:`rgba(${colorProgress.r},${colorProgress.g},${colorProgress.b},${colorProgress.a})`}}></div>
     </div>
+    <div id = "colorShrift" style={{color:`rgba(${colorShrift.r},${colorShrift.g},${colorShrift.b},${colorShrift.a})`, marginTop:"30px",display:"flex"}}>
+       <div className="rank-card-top-left">Diiimooon#9086</div> <div className="rank-card-top-right"><FontAwesomeIcon icon={["fas", "hotdog"]} color="white"/> 908</div>
+    </div>
     </div>
     </div>
     <div style={{backgroundColor:colorFon,width:"100%",height:"150px",display:"flex"}} id="card2">
       <div style={{width:"20%"}}>
-    <svg width="100" height="100">
-  <circle cx="50" cy="50" r="40" stroke-width="4" fill="yellow" />
+    <svg width="100" height="100%" style={{marginTop:"25px"}}>
+  <circle cx="50" cy="50" r="51" stroke-width="100" fill="yellow" />
 </svg>
-<div id = "colorShrift" style={{color:`rgba(${colorShrift.r},${colorShrift.g},${colorShrift.b},${colorShrift.a})`}}>
-       Diiimooon <FontAwesomeIcon icon={["fas", "hotdog"]} /> 908
     </div>
-    </div>
-    <div style={{width:"70%",marginTop: "50px",marginLeft: "20px"}}>
+    <div style={{width:"70%",marginTop: "30px",marginLeft: "20px"}}>
       <div style={{display:"flex"}}>
         <div className="rank-card-top-left" id = "colorShrift" style={{color:`rgba(${colorShrift.r},${colorShrift.g},${colorShrift.b},${colorShrift.a})`}}>LVL 35 <FontAwesomeIcon icon={["fas", "microphone"]}  color="white" /> 34:37:38</div>
          <div className="rank-card-top-right" id = "colorShrift" style={{color:`rgba(${colorShrift.r},${colorShrift.g},${colorShrift.b},${colorShrift.a})`}}> 1024/2048 EXP</div>
@@ -451,76 +495,130 @@ function Levels(){
     <div className="loh" style={{borderTopColor:`rgba(${colorFonProgress.r},${colorFonProgress.g},${colorFonProgress.b},${colorFonProgress.a})`}}>
     <div className="loh-children" style={{borderTopColor:`rgba(${colorProgress.r},${colorProgress.g},${colorProgress.b},${colorProgress.a})`}}></div>
     </div>
+    <div id = "colorShrift" style={{color:`rgba(${colorShrift.r},${colorShrift.g},${colorShrift.b},${colorShrift.a})`, marginTop:"25px",display:"flex"}}>
+       <div className="rank-card-top-left">Diiimooon#9086</div> <div className="rank-card-top-right"><FontAwesomeIcon icon={["fas", "hotdog"]} color="white"/> 908</div>
+    </div>
     </div>
     </div>
     <div style={{width:"100%",marginTop:"20px"}}>Настройка цветов</div>
     <div className="color-settings-card">
       <div className="left-color-settings-card">Цвет прогресса</div>
       <div className="right-color-settings-card">
-      <div className="styles-swatch" onClick={() => setShowColorPickerProgress(showColorPickerProgress => !showColorPickerProgress) }>
-          <div  className="styles-color" style={{background: `rgba(${ colorShrift.r }, ${ colorShrift.g }, ${ colorShrift.b }, ${ colorShrift.a })`}} />
-          </div>
-        {showColorPickerProgress ? <div style={styles.popover}>
-          <div style={ styles.cover } onClick={ () => setShowColorPickerProgress(showColorPickerProgress => false) }/>
-        <ChromePicker 
+      <div className="styles-swatch" onClick={handleClickProgress }>
+      <div className="styles-color" style={{background: `rgba(${ colorProgress.r }, ${ colorProgress.g }, ${ colorProgress.b }, ${ colorProgress.a })`}} />
+      </div>
+      <Popover
+        id={idProgress}
+        open={openProgress}
+        anchorEl={anchorElProgress}
+        onClose={handleCloseProgress}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+      >
+        <Typography><ChromePicker 
       color={ colorProgress} 
       onChangeComplete={(color) => {
         setColorProgress(color.rgb)
 
       }}
-      /></div> : null}
+      /></Typography>
+      </Popover>
       </div>
       
     </div>
     <div className="color-settings-card">
       <div className="left-color-settings-card">Цвет фона прогресса</div>
       <div className="right-color-settings-card">
-      <div className="styles-swatch" onClick={() => setShowColorPickerFonProgress(showColorPickerFonProgress => !showColorPickerFonProgress) }>
-          <div  className="styles-color" style={{background: `rgba(${ colorFonProgress.r }, ${ colorFonProgress.g }, ${ colorFonProgress.b }, ${ colorFonProgress.a })`}} />
-          </div>
-        {showColorPickerFonProgress ? <div style={styles.popover}>
-          <div style={ styles.cover } onClick={ () => setShowColorPickerFonProgress(showColorPickerFonProgress => false) }/>
-        <ChromePicker 
+      <div className="styles-swatch" onClick={handleClickFonProgress }>
+      <div className="styles-color" style={{background: `rgba(${ colorFonProgress.r }, ${ colorFonProgress.g }, ${ colorFonProgress.b }, ${ colorFonProgress.a })`}} />
+      </div>
+      <Popover
+        id={idFonProgress}
+        open={openFonProgress}
+        anchorEl={anchorElFonProgress}
+        onClose={handleCloseFonProgress}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+      >
+        <Typography><ChromePicker 
       color={ colorFonProgress} 
       onChangeComplete={(color) => {
         setColorFonProgress(color.rgb)
 
       }}
-      /></div> : null}
+      /></Typography>
+      </Popover>
       </div>
     </div>
     <div className="color-settings-card">
       <div className="left-color-settings-card">Цвет фона</div>
       <div className="right-color-settings-card">
-      <div className="styles-swatch" onClick={() => setShowColorPickerFon(showColorPickerFon => !showColorPickerFon) }>
-          <div  className="styles-color" style={{background: colorFon}} />
-          </div>
-        {showColorPickerFon ? <div style={styles.popover}>
-          <div style={ styles.cover } onClick={ () => setShowColorPickerFon(showColorPickerFon => false) }/>
-        <ChromePicker 
+      <div className="styles-swatch" onClick={handleClickFon }>
+      <div className="styles-color" style={{background: colorFon}} />
+      </div>
+      <Popover
+        id={idFon}
+        open={openFon}
+        anchorEl={anchorElFon}
+        onClose={handleCloseFon}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+      >
+        <Typography><ChromePicker 
       color={ colorFon} 
-      disableAlpha={true}
       onChangeComplete={(color) => {
         setColorFon(color.hex)
 
       }}
-      /></div> : null}
+      /></Typography>
+      </Popover>
       </div>
     </div>
     <div className="color-settings-card">
       <div className="left-color-settings-card">Цвет шрифта</div>
-      <div className="right-color-settings-card"><div className="styles-swatch" onClick={() => setShowColorPickerShrift(showColorPickerShrift => !showColorPickerShrift) }>
-          <div className="styles-color" style={{background: `rgba(${ colorShrift.r }, ${ colorShrift.g }, ${ colorShrift.b }, ${ colorShrift.a })`}} />
-          </div>
-        {showColorPickerShrift ? <div style={styles.popover}>
-          <div style={ styles.cover } onClick={ () => setShowColorPickerShrift(showColorPickerShrift => false) }/>
-        <ChromePicker 
+      <div className="right-color-settings-card"><div className="styles-swatch" onClick={handleClickShrift }>
+      <div className="styles-color" style={{background: `rgba(${ colorShrift.r }, ${ colorShrift.g }, ${ colorShrift.b }, ${ colorShrift.a })`}} />
+      </div>
+      <Popover
+        id={idShrift}
+        open={openShrift}
+        anchorEl={anchorElShrift}
+        onClose={handleCloseShrift}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+      >
+        <Typography><ChromePicker 
       color={ colorShrift} 
       onChangeComplete={(color) => {
         setColorShrift(color.rgb)
 
       }}
-      /></div> : null}</div>
+      /></Typography>
+      </Popover></div>
     </div>
          </div>
         </div>
