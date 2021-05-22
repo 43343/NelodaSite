@@ -142,8 +142,8 @@ font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: center;
   
 }
-.text-area-minimal::-webkit-outer-spin-button,
-.text-area-minimal::-webkit-inner-spin-button {
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
   /* display: none; <- Crashes Chrome on hover */
   -webkit-appearance: none;
   margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
@@ -242,7 +242,7 @@ font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .commands-block-container{
   overflow-y: auto;
-  max-height:540px;
+  max-height:505px;
  
 }
 .commands-opisanie{
@@ -343,4 +343,210 @@ input:checked + .slider-minimal:before {
   text-align:center;
   align-items: center;
   display: flex;
+}
+.icon-question-background{
+  height: 3vmin;
+  width: 3vmin;
+  background-color: rgb(48, 56, 70);
+  border-radius: 200px;
+  border-top: 2px groove grey;
+  border-bottom: 2px groove grey;
+  border-right: 2px groove rgb(48, 56, 70);
+  border-left: 2px groove rgb(48, 56, 70);
+  cursor: pointer;
+  -webkit-transition: -webkit-transform .8s ease-in-out;
+          transition:         transform .8s ease-in-out;
+          text-align: center;
+}
+.icon-question{
+  height: 2vmin;
+  width: 2vmin;
+  color:white;
+}
+.icon-question-background:hover{
+  -webkit-transform: rotate(50deg);
+  transform: rotate(50deg);
+}
+.documentation-command{
+  margin-top:0.5%;
+  margin-bottom:0.5%;
+  margin-left:0.5%;
+  color:gray;
+  font-size: 15px;
+}
+.a-link{
+  color: #000!important;
+  text-decoration: none;
+  margin-top:0.5%;
+          margin-bottom:0.5%;
+          margin-left:0.5%;
+}
+@media (max-width: 800px) {
+  .Dashboard-left{
+    display: none;
+  }
+  .Dashboard-right{
+    width:1000px;
+    height: auto;
+    margin:25px;
+    overflow:hidden;
+  }
+  .main{
+    width:100%;
+  }
+  .main-block-levels{
+    width:100%;
+    margin-top:25px;
+  }
+}
+.main-block-left{
+  text-align:left;
+  width:50%;
+  height:100%;
+}
+.main-block-right{
+  text-align: right;
+  width:50%;
+  height:100%;
+  display:inline;
+}
+.block-custom-commands{
+  width:97%;
+  display: flex;
+  padding-top:20px;
+  padding-left:20px;
+  border-bottom: 2px groove black; 
+}
+.block-custom-commands-rigth{
+  text-align: right;
+  width:20%;
+  height:100%;
+  display:inline;
+}
+.block-custom-commands-left{
+  text-align:left;
+  width:80%;
+  height:100%;
+}
+.settings-command-edit{
+  width:60%;
+  height:550px;
+}
+.settings-command-edit-top{
+  max-width:100%;
+  height:25px;
+  background-color:rgb(20, 82, 117);
+  padding-top:10px;
+  padding-left:20px;
+  text-align: left;
+}
+.settings-command-edit-bottom{
+  
+  max-width:100%;
+  height:525px;
+  background-color: rgb(10, 32, 44);
+  border: 2px groove black;
+  overflow-y: auto;
+  text-align: left;
+}
+.settings-text-razdel{
+  padding-top: 20px;
+  padding-left: 20px;
+}
+.textarea-edit-commands{
+  resize: none;
+  outline: none;
+  margin-top: 20px;
+  margin-left:20px;
+  width:90%;
+  height:200px;
+  color:white;
+  background-color: rgb(27, 28, 44);
+}
+.knopka-toggle-picker-color{
+  background-color: rgb(58, 58, 250);
+  color:white;
+  width:20%;
+  outline: none;
+  cursor:pointer;
+  font-size: 20px;
+  height:30px;
+  border-radius: 5px;
+  border: none;
+}
+.knopka-toggle-picker-color:hover{
+  background-color: rgb(58, 58, 129);
+}
+.knopka-toggle-picker-color:active{
+  background-color: rgb(58, 58, 65);
+}
+.knopka-hidden-embed{
+  background-color:rgb(59, 55, 55);
+  border-radius:5px;
+  border:none;
+  font-size: 20px;
+   height:30px;
+    outline:none;
+    cursor:pointer;
+}
+.knopka-hidden-embed:hover{
+  background-color:rgb(59, 49, 49);
+}
+.knopka-hidden-embed:active{
+  background-color:rgb(44, 43, 43);
+}
+.settings-text-razdel-embed{
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-top: 1px groove black;
+  border-right: 1px groove black;
+  border-bottom: 1px groove black;
+  border-left: 5px groove #000;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.input-type-text{
+  color:white;
+  background-color: rgb(27, 28, 44);
+  outline:none;
+  border-radius: 5px;
+  margin:10px;
+  height:30px;
+}
+.button-bottom{
+  max-width:100%;
+  text-align: right;
+  margin-top:20px;
+  padding-right:20px;
+}
+.save-settings-command-button{
+  width: 100px;
+  background-color: rgb(119, 241, 119);
+  color:white;
+  outline: none;
+  cursor: pointer;
+}
+.cancel-settings-command-button{
+  background-color: rgb(182, 44, 44);
+  outline: none;
+  cursor: pointer;
+}
+@media (max-width: 850px) {
+  .Dashboard-left{
+    display: none;
+  }
+  .Dashboard-right{
+    width:100%;
+    height: auto;
+    margin-top:25px;
+    overflow:hidden;
+  }
+  .main{
+    width:100%;
+  }
+  .main-block-levels{
+    width:100%;
+    margin-top:25px;
+  }
 }

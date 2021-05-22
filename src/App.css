@@ -42,12 +42,12 @@
 }
 .App-header-top-left{
   text-align:left;
-  width:50%;
+  width:20%;
   height:100%;
 }
 .App-header-top-right{
   text-align: right;
-  width:50%;
+  width:80%;
   height:100%;
 }
 .App-logo {
@@ -149,6 +149,9 @@
   outline:none;
   cursor:pointer;
 }
+.button-open-menu{
+  display: none;
+}
 
 @keyframes App-logo-spin {
   from {
@@ -156,5 +159,48 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+@media (max-width: 850px) {
+  .App-logo-top{
+    display: none;
+  }
+  .Commands{
+    display: none;
+  }
+  .Documentation{
+    display: none;
+  }
+  .Donate{
+    display: none;
+  }
+  .Support{
+    display: none;
+  }
+  .button-open-menu{
+    display: block;
+  }
+}
+@media (max-width: 400px) {
+  .App-logo-top{
+    display: none;
+  }
+  .Commands{
+    display: none;
+  }
+  .Documentation{
+    display: none;
+  }
+  .Donate{
+    display: none;
+  }
+  .Support{
+    display: none;
+  }
+  .button-open-menu{
+    display: block;
+  }
+  .server-selected{
+    display:none;
   }
 }

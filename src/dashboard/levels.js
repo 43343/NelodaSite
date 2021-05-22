@@ -101,6 +101,8 @@ function Levels(){
   const [anchorElFon, setAnchorElFon] = React.useState(null);
   const [anchorElFonProgress, setAnchorElFonProgress] = React.useState(null);
   const [anchorElProgress, setAnchorElProgress] = React.useState(null);
+  const [disabledRank, setDisabledRank] = React.useState(true);
+  const [disabledNotificatonRank, setDisabledNotificationRank] = React.useState(true);
 
   const handleClickShrift = (event) => {
     setAnchorElShrift(event.currentTarget);
@@ -160,7 +162,6 @@ function Levels(){
     value = value.replace(',', '');
     value = Math.max(Number(min), Math.min(Number(max), Number(value)));
     target.value = value;
-    console.log("loj")
   };
     const user = "{user}";
     const levelss = "{level}";
@@ -210,50 +211,57 @@ function Levels(){
   const toggleClickRoles2 = () => {keys++; setChipDataRoles((chips) => [...chips,{key:{keys},label:"MODERATOR"}])}
 
   const handleDeleteTextChannels = (chipToDelete) => () => {
-    setChipDataTextChannels((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
+    if(!disabledRank)setChipDataTextChannels((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
   };
   const handleDeleteVoiceChannels = (chipToDelete) => () => {
-    setChipDataVoiceChannels((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
+   if(!disabledRank) setChipDataVoiceChannels((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
   };
   const handleDeleteRoles = (chipToDelete) => () => {
-    setChipDataRoles((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
+    if(!disabledRank)setChipDataRoles((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
   };
  const [itemReward,setItemReward] = React.useState([])
  const [id,setid] = React.useState(0);
    const pushItemReward = () => {
-     setid((set) => set+1)
-     console.log(id);
-     setItemReward((reward) => [...reward,{id:id,content: (<div className="main-block">
-     <div className="App-header-top-left"><input type="number" name="lvlinput" placeholder="LVL" className="text-area-minimal" min="1" max="999" onInput={setNumber}></input></div>
-     <div className="App-header-top-right">
+     setid((set) => set+1);
+     setItemReward((reward) => [...reward,{id:id,content: <div className="main-block">
+     <div className="main-block-left"><input type="number" name="lvlinput" placeholder="LVL" className="text-area-minimal" min="1" max="999" onInput={setNumber}></input></div>
+     <div className="main-block-right">
      <select id="participant" name="countires" className="input-color"><option value="">ADMINISTRATOR</option>
   <option>MODERATOR</option>
   <option>GLAVA</option>
   </select>
-       <button className="button-krestik" onClick={() => removeItemReward(id)}><FontAwesomeIcon icon={["fas", "times"]} color="white" /></button>
+       <button  className="button-krestik" onClick={() => removeItemReward(id)}><FontAwesomeIcon icon={["fas", "times"]} color="white" /></button>
      </div>
-         </div>)}])
+         </div>}])
    }
    const removeItemReward = (ids) => {
-     setItemReward((reward) => reward.filter((reward) => reward.id !== ids));
-     console.log(id)
-
-   }
+    if(!disabledRank) setItemReward((reward) => reward.filter((reward) => reward.id !== ids));
+      }
+      const enabledRang = ({target}) => {
+        setDisabledRank(!target.checked);
+        setDisabledNotificationRank(true);
+        document.getElementsByTagName("button").disabled = !target.checked;
+        document.getElementById("rank").checked = false;
+        document.getElementById("rank2").checked = false;
+      }
+      const enabledNotificationRank = ({target}) => {
+        setDisabledNotificationRank(!target.checked);
+      }
       return (
           <div>
         <div className="main">
          <div className="main-top">ОСНОВНОЕ<button style={{background:"none", outline:"none", cursor:"pointer", border:"none"}} onClick={() => document.getElementById('osnovnoe').style.display === "none" ? document.getElementById('osnovnoe').style.display = "block" : document.getElementById('osnovnoe').style.display = "none"}><FontAwesomeIcon icon={["fas", "angle-down"]} /> Показать/Скрыть</button></div>
          <div className="main-bottom" id="osnovnoe">
          <div className="main-block">
-             <div className="App-header-top-left">ВКЛЮЧИТЬ СИСТЕМУ РАНГОВ</div>
-             <div className="App-header-top-right"><label class="switch">
-  <input type="checkbox"></input>
+             <div className="main-block-left">ВКЛЮЧИТЬ СИСТЕМУ РАНГОВ</div>
+             <div className="main-block-right"><label class="switch">
+  <input type="checkbox" onInput={enabledRang}></input>
   <span class="slider"></span>
 </label></div>
                  </div>
          <div className="main-block">
-         <div className="App-header-top-left">ИГНОРИРУЕМЫЕ ТЕКСТОВЫЕ КАНАЛЫ</div>
-         <div className="App-header-top-right">
+         <div className="main-block-left">ИГНОРИРУЕМЫЕ ТЕКСТОВЫЕ КАНАЛЫ</div>
+         <div className="main-block-right">
            </div>
            </div>
            <div className="main-block">
@@ -288,14 +296,14 @@ function Levels(){
           </li>
         );
       })}
-      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClickTextChannels}>
+      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClickTextChannels} disabled={disabledRank}>
         Open Menu
       </Button>
     </Paper>
          </div>
          <div className="main-block">
-         <div className="App-header-top-left">ИГНОРИРУЕМЫЕ ГОЛОСОВЫЕ КАНАЛЫ</div>
-         <div className="App-header-top-right">
+         <div className="main-block-left">ИГНОРИРУЕМЫЕ ГОЛОСОВЫЕ КАНАЛЫ</div>
+         <div className="main-block-right">
          </div>
          </div>
          <div className="main-block">
@@ -330,14 +338,14 @@ function Levels(){
           </li>
         );
       })}
-      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClickVoiceChannels}>
+      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClickVoiceChannels} disabled={disabledRank}>
         Open Menu
       </Button>
     </Paper>
          </div>
          <div className="main-block">
-         <div className="App-header-top-left">ИГНОРИРУЕМЫЕ РОЛИ</div>
-         <div className="App-header-top-right">
+         <div className="main-block-left">ИГНОРИРУЕМЫЕ РОЛИ</div>
+         <div className="main-block-right">
          </div>
          </div>
          <div className="main-block">
@@ -372,14 +380,14 @@ function Levels(){
           </li>
         );
       })}
-      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClickRoles}>
+      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClickRoles} disabled={disabledRank}>
         Open Menu
       </Button>
     </Paper>
          </div>
          <div className="main-block">
-         <div className="App-header-top-left">МНОЖ. ОПЫТА</div>
-         <div className="App-header-top-right">
+         <div className="main-block-left">МНОЖ. ОПЫТА</div>
+         <div className="main-block-right">
          <Slider
   defaultValue={1.5}
   aria-labelledby="discrete-slider-small-steps"
@@ -388,6 +396,7 @@ function Levels(){
   min={0.5}
   max={3.0}
   valueLabelDisplay="auto"
+  disabled={disabledRank}
 />
          </div>
          </div>
@@ -397,14 +406,14 @@ function Levels(){
          <div className="main-top">УВЕДОМЛЕНИЕ О ПОВЫШЕНИИ УРОВНЯ<button style={{background:"none", outline:"none", cursor:"pointer", border:"none"}} onClick={() => document.getElementById('notificationoflevelupgrade').style.display === "none" ? document.getElementById('notificationoflevelupgrade').style.display = "block" : document.getElementById('notificationoflevelupgrade').style.display = "none"}><FontAwesomeIcon icon={["fas", "angle-down"]} /> Показать/Скрыть</button></div>
          <div className="main-bottom" id="notificationoflevelupgrade">
              <div className="main-block">
-             <div className="App-header-top-left">ВКЛЮЧИТЬ УВЕДОМЛЕНИЯ О ПОВЫШЕНИИ УРОВНЯ</div>
-             <div className="App-header-top-right"><label class="switch">
-  <input type="checkbox"></input>
+             <div className="main-block-left">ВКЛЮЧИТЬ УВЕДОМЛЕНИЯ О ПОВЫШЕНИИ УРОВНЯ</div>
+             <div className="main-block-right"><label class="switch">
+  <input type="checkbox" disabled={disabledRank} id="rank" onInput={enabledNotificationRank}></input>
   <span class="slider"></span>
 </label></div>
                  </div>
          <div className="main-block">
-             <textarea placeholder="Шаблон сообщения" className="text-area"></textarea>
+             <textarea placeholder="Шаблон сообщения" className="text-area" disabled={disabledNotificatonRank}></textarea>
                  </div>
                  <font size="2">Используйте ${user} для указания пользователя, ${levelss} для указания уровня</font>
          </div>
@@ -413,9 +422,9 @@ function Levels(){
          <div className="main-top">ЛАРЁК С ХОТДОГАМИ<button style={{background:"none", outline:"none", cursor:"pointer", border:"none"}} onClick={() => document.getElementById('shawarmastall').style.display === "none" ? document.getElementById('shawarmastall').style.display = "block" : document.getElementById('shawarmastall').style.display = "none"}><FontAwesomeIcon icon={["fas", "angle-down"]} /> Показать/Скрыть</button></div>
          <div className="main-bottom" id="shawarmastall">
          <div className="main-block">
-             <div className="App-header-top-left">ВКЛЮЧИТЬ ЛАРЁК С ХОТДОГАМИ</div>
-             <div className="App-header-top-right"><label class="switch">
-  <input type="checkbox"></input>
+             <div className="main-block-left">ВКЛЮЧИТЬ ЛАРЁК С ХОТДОГАМИ</div>
+             <div className="main-block-right"><label class="switch">
+  <input type="checkbox" disabled={disabledRank} id="rank2"></input>
   <span class="slider"></span>
 </label></div>
                  </div>
@@ -427,12 +436,12 @@ function Levels(){
          </div>
         </div>
         <div className="main-block-levels">
-         <div className="main-top">НАГРАДЫ ЗА УРОВЕНЬ<button style={{background:"none", outline:"none", cursor:"pointer", border:"none"}} onClick={() => document.getElementById('rewardforlevel').style.display === "none" ? document.getElementById('rewardforlevel').style.display = "block" : document.getElementById('rewardforlevel').style.display = "none"}><FontAwesomeIcon icon={["fas", "angle-down"]} /> Показать/Скрыть</button>
-         <button style={{background:"none", outline:"none", cursor:"pointer", border:"none"}} onClick={pushItemReward}><span style={{fontStyle:"italic"}}>+</span> Добавить</button></div>
+         <div className="main-top">НАГРАДЫ ЗА УРОВЕНЬ<button style={{background:"none", outline:"none", cursor:"pointer", border:"none"}} onClick={() => {if(itemReward.length !== 0 ){document.getElementById('rewardforlevel').style.display === "none" ? document.getElementById('rewardforlevel').style.display = "block" : document.getElementById('rewardforlevel').style.display = "none"}}}><FontAwesomeIcon icon={["fas", "angle-down"]} /> Показать/Скрыть</button>
+         <button disabled={disabledRank} style={{background:"none", outline:"none", cursor:"pointer", border:"none"}} onClick={pushItemReward}><span style={{fontStyle:"italic"}}>+</span> Добавить</button></div>
          <div className="main-bottom" id="rewardforlevel">
          
       {itemReward.map(item => (
-        <div key={item.id}>{item.content}</div>
+        <div key={item.id} >{item.content}</div>
       ))}
     
          </div>
@@ -441,21 +450,25 @@ function Levels(){
          <div className="main-top">ПОЛЬЗОВАТЕЛЬСКАЯ РАНГ-КАРТОЧКА<button style={{background:"none", outline:"none", cursor:"pointer", border:"none"}} onClick={() => document.getElementById('userrangkard').style.display === "none" ? document.getElementById('userrangkard').style.display = "block" : document.getElementById('userrangkard').style.display = "none"}><FontAwesomeIcon icon={["fas", "angle-down"]} /> Показать/Скрыть</button></div>
          <div className="main-bottom" id="userrangkard">
          <FormControl component="fieldset">
-      <RadioGroup defaultValue="female" aria-label="gender" name="customized-radios">
+      <RadioGroup defaultValue="female" aria-label="gender" name="customized-radios" > 
         <FormControlLabel value="female" control={<StyledRadio />} onClick={() => {
+          if(!disabledRank){
           document.getElementById("card1").style.display = "none";
           document.getElementById("card2").style.display = "flex";
-        }} label="опыт за голосовые и текстовые каналы будет начисляться раздельно" />
+          }
+        }} label="опыт за голосовые и текстовые каналы будет начисляться раздельно" disabled={disabledRank}/>
         <FormControlLabel value="male" control={<StyledRadio />} onClick={() => {
+          if(!disabledRank){
           document.getElementById("card2").style.display = "none";
           document.getElementById("card1").style.display = "flex";
-        }} label="опыт за голосовые и текстовые каналы будет начисляться совместно" />
+          }
+        }} label="опыт за голосовые и текстовые каналы будет начисляться совместно" disabled={disabledRank}/>
       </RadioGroup>
     </FormControl>
     <div style={{backgroundColor:colorFon,width:"100%",height:"150px",display:"none"}} id="card1">
       <div style={{width:"20%"}}>
-    <svg width="100" height="100%" style={{marginTop:"25px"}}>
-  <circle cx="50" cy="50" r="51" stroke-width="100" fill="yellow" />
+    <svg width="100%" height="100%" style={{marginTop:"25px"}}>
+  <circle cx="50%" cy="35%" r="35%" stroke-width="100" fill="yellow" />
 </svg>
     </div>
     <div style={{width:"70%",marginTop: "70px",marginLeft: "20px"}}>
@@ -474,8 +487,8 @@ function Levels(){
     </div>
     <div style={{backgroundColor:colorFon,width:"100%",height:"150px",display:"flex"}} id="card2">
       <div style={{width:"20%"}}>
-    <svg width="100" height="100%" style={{marginTop:"25px"}}>
-  <circle cx="50" cy="50" r="51" stroke-width="100" fill="yellow" />
+      <svg width="100%" height="100%" style={{marginTop:"25px"}}>
+  <circle cx="50%" cy="35%" r="35%" stroke-width="100%" fill="yellow" />
 </svg>
     </div>
     <div style={{width:"70%",marginTop: "30px",marginLeft: "20px"}}>
@@ -524,7 +537,7 @@ function Levels(){
         <Typography><ChromePicker 
       color={ colorProgress} 
       onChangeComplete={(color) => {
-        setColorProgress(color.rgb)
+        if(!disabledRank)setColorProgress(color.rgb)
 
       }}
       /></Typography>
@@ -555,7 +568,7 @@ function Levels(){
         <Typography><ChromePicker 
       color={ colorFonProgress} 
       onChangeComplete={(color) => {
-        setColorFonProgress(color.rgb)
+        if(!disabledRank)setColorFonProgress(color.rgb)
 
       }}
       /></Typography>
@@ -584,9 +597,9 @@ function Levels(){
       >
         <Typography><ChromePicker 
       color={ colorFon} 
+      disableAlpha={true}
       onChangeComplete={(color) => {
-        setColorFon(color.hex)
-
+        if(!disabledRank)setColorFon(color.hex)
       }}
       /></Typography>
       </Popover>
@@ -594,7 +607,7 @@ function Levels(){
     </div>
     <div className="color-settings-card">
       <div className="left-color-settings-card">Цвет шрифта</div>
-      <div className="right-color-settings-card"><div className="styles-swatch" onClick={handleClickShrift }>
+      <div className="right-color-settings-card"><div className="styles-swatch" onClick={handleClickShrift } disabled={true}>
       <div className="styles-color" style={{background: `rgba(${ colorShrift.r }, ${ colorShrift.g }, ${ colorShrift.b }, ${ colorShrift.a })`}} />
       </div>
       <Popover
@@ -614,7 +627,7 @@ function Levels(){
         <Typography><ChromePicker 
       color={ colorShrift} 
       onChangeComplete={(color) => {
-        setColorShrift(color.rgb)
+        if(!disabledRank)setColorShrift(color.rgb)
 
       }}
       /></Typography>

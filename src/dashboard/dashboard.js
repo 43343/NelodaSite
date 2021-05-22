@@ -11,7 +11,7 @@ import Levels from "./levels.js";
 import Main from "./main.js";
 import Questions from "./questions.js";
 import CustomCommands from "./customCommands.js"
-import Commands from "./commands/commands.js"
+import Commands from "./commands.js"
 
 class Dashboard extends React.Component {
     render() {
