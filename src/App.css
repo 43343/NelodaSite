@@ -56,9 +56,20 @@
   border-radius: 200px;
 }
 .App-logo-top{
-  height: 5vmin;
+  padding-top: 5px;
+  height: 30px;
+  width: 30px;
+  vertical-align: top;
   pointer-events: none;
   border-radius: 200px;
+  margin-top: -5px;
+}
+.App-logo-top-link{
+  text-decoration: none;
+  vertical-align: top;
+  color:white;
+  display: flex;
+  font-size: 27px;
 }
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -76,12 +87,26 @@
   font-size: calc(20px + 20vmin);
   color: white;
 }
+.App-header-premium{
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.App-header-commands {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
 .add-to-discord{
   background-color: #17b3b3;
-  width:550px;
-  height:50px;
   color:white;
-  font-size:40px;
+  font-size:5vh;
   outline:none;
   cursor:pointer;
 }
@@ -92,15 +117,15 @@
 .Login{
    color:white;
    background-color: #282a2c;
-   height:30px;
    width:150px;
+   height:30px;
    outline:none;
    cursor:pointer;
+   vertical-align: top;
 }
 .Donate{
   cursor: pointer;
   outline: none;
-  height:50%;
 }
 .Donate:hover::after{
   content:" Premium";
@@ -111,7 +136,6 @@
 .Support{
   cursor: pointer;
   outline: none;
-  height:50%;
 }
 .Support:hover::after{
   content:" Техподдержка";
@@ -122,7 +146,6 @@
 .Commands{
   cursor: pointer;
   outline: none;
-  height:50%;
 }
 .Commands:hover::after{
   content:" Команды";
@@ -133,7 +156,6 @@
 .Documentation{
   cursor: pointer;
   outline: none;
-  height:50%;
 }
 .Documentation:hover::after{
   content:" Документация";
@@ -148,11 +170,135 @@
   width:150px;
   outline:none;
   cursor:pointer;
+  vertical-align: top;
 }
 .button-open-menu{
   display: none;
 }
-
+.server-selected-block{
+  width: 150px;
+  color:white;
+  display: flex;
+  margin-left:5px;
+  margin-top: 5px;
+  outline:none;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;      
+  user-select: none;
+  cursor: pointer;
+}
+.server-selected-block-no{
+  width: 150px;
+  color:rgb(94, 92, 92);
+  display: flex;
+  margin-left:5px;
+  margin-top: 5px;
+  outline:none;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;      
+  user-select: none;
+  cursor: pointer;
+   
+}
+.server-selected-current{
+  width: 50px;
+  height:20px;
+  color:white;
+  display: flex;
+  outline:none;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;      
+  user-select: none;
+  cursor: pointer;
+}
+.server-selected-block:hover{
+  background-color: #61dafb;
+}
+.server-selected-block-no:hover{
+  background-color: #61dafb;
+  color:white;
+}
+.server-selected-icon-current{
+  padding-top:5px;
+}
+.server-selected-name{
+  margin-left: 5px;
+  font-size: 10px;
+  padding-top:5px;
+  padding-left: 10px;
+}
+.server-selected-add-or-settings{
+  margin-left: 5px;
+  font-size: 10px;
+  padding-top:5px;
+  padding-left: 40px;
+}
+.server-selected-name-current{
+  font-size: 10px;
+  padding-top: 4px;
+  padding-left: 10px;
+  min-width:90px;
+  max-width:90px;
+  overflow: hidden;
+}
+.server-selected-add-or-settings-current{
+  font-size: 10px;
+  padding-top: 2px;
+  padding-left: 15px;
+}
+.server-selected-icon-options{
+  height: 22px;
+  pointer-events: none;
+  border-radius: 200px;
+}
+.server-selected-icon-options-current{
+  height: 15px;
+  width: 15px;
+  pointer-events: none;
+  border-radius: 200px;
+  padding-top: 2px;
+}
+.server-selected-name{
+  margin-left: 5px;
+  font-size: 10px;
+  padding-top:5px;
+  padding-left: 10px;
+}
+.App-header-min{
+  display: flex;
+  font-size: 5vmin;
+  color: white;
+  text-decoration: none;
+}
+.quit-user{
+  background: none;
+  width:135px;
+  text-align: left;
+  color:rgb(255, 46, 46);
+  border:none;
+  outline:none;
+  cursor:pointer;
+}
+.server-selected-menu-mobile{
+  width:90%;
+      height:50px;
+      outline:none;
+      background-color: #282c34;
+      border:none;
+      margin-top:5px;
+      color: white;
+      text-align: left;
+      padding-left: 5px;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -180,6 +326,40 @@
   .button-open-menu{
     display: block;
   }
+  .App-header-min{
+    display: none;
+  }
+  .server-selected-block{
+    width: 150px;
+    color:white;
+    display: flex;
+    margin-left:30px;
+    margin-top: -20px;
+    outline:none;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;      
+    user-select: none;
+    cursor: pointer;
+  }
+  .server-selected-block-no{
+    width: 150px;
+    color:rgb(94, 92, 92);
+    display: flex;
+    margin-left:30px;
+    margin-top: 5px;
+    outline:none;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;      
+    user-select: none;
+    cursor: pointer;
+     
+  }
 }
 @media (max-width: 400px) {
   .App-logo-top{
@@ -199,6 +379,8 @@
   }
   .button-open-menu{
     display: block;
+    background-color: #282a2c;
+    outline:none;
   }
   .server-selected{
     display:none;

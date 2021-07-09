@@ -13,6 +13,7 @@ import TagFacesIcon from '@material-ui/icons/TagFaces';
 import { ChromePicker } from 'react-color';
 import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
+import classNames from "classnames";
 
 const useStyles = makeStyles((theme) => ({
   typography: {
@@ -453,24 +454,24 @@ function CustomCommands()  {
        <div className="settings-text-razdel-embed" style={{borderLeftColor:pickerColor}}>
        <div>
          <input type="text" placeholder="Ссылка на иконку" className="input-type-text" autocomplete="off"></input>
-         <input type="text" placeholder="Имя автора" className="input-type-text" style={{width:"40%"}} autocomplete="off"></input>
+         <input type="text" placeholder="Имя автора" className={classNames("input-type-text","width-date")} autocomplete="off"></input>
          <input type="text" placeholder="Ссылка на автора" className="input-type-text" autocomplete="off"></input>
        </div>
        <div>
-         <input type="text" placeholder="Наименование" className="input-type-text" style={{width:"66.5%"}} autocomplete="off"></input>
+         <input type="text" placeholder="Наименование" className={classNames("input-type-text","width-name")}  autocomplete="off"></input>
          <input type="text" placeholder="Ссылка наименования" className="input-type-text" autocomplete="off"></input>
        </div>
        <div>
-         <textarea className="textarea-edit-commands"></textarea>
+         <textarea className="textarea-edit-commands-embed"></textarea>
        </div>
        <div>
-         <input type="text" placeholder="Ссылка на полноразмерную картинку" className="input-type-text" style={{width:"45%"}} autocomplete="off"></input>
-         <input type="text" placeholder="Ссылка на миниатюрную картинку" className="input-type-text" style={{width:"45%"}}autocomplete="off"></input>
+         <input type="text" placeholder="Ссылка на полноразмерную картинку" className={classNames("input-type-text","width-icon")}  autocomplete="off"></input>
+         <input type="text" placeholder="Ссылка на миниатюрную картинку" className={classNames("input-type-text","width-icon")} autocomplete="off"></input>
        </div>
        <div>
          <input type="text" placeholder="Футер" className="input-type-text" autocomplete="off"></input>
          <input type="text" placeholder="Ссылка на иконку футера" className="input-type-text" autocomplete="off"></input>
-         <input type="date" className="input-type-text" style={{width:"40%"}}></input>
+         <input type="date" className={classNames("input-type-text","width-date")} ></input>
        </div>
      </div></div>) : 
        <div style={{width:"100%"}}><button style={{backgroundColor:"rgb(59, 55, 55)",height:"50px",width:"90%",marginTop:"20px",marginLeft:"20px", outline:"none",cursor:"pointer"}} onClick={() => setOpenEmbed(true)}>ПОКАЗАТЬ КОНСТРУКТОР ШАБЛОНА</button></div>}

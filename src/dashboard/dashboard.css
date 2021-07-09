@@ -6,13 +6,13 @@
   }
   .Dashboard-left{
     border: 4px double black;
-    width:250px;
-    height:600px;
+    width:50vh;
+    height:100vh;
     margin:25px;
   }
   .Dashboard-right{
-    width:1000px;
-    height:600px;
+    width:188vh;
+    height:100vh;
     margin:25px;
     overflow-y:auto;
   }
@@ -158,25 +158,27 @@ input::-webkit-inner-spin-button {
   cursor: pointer;
 }
 .loh{
-  border-top: 10px solid;
+  border-top: 1.5vh solid;
   border-right: 10px solid transparent;
   width:100%;
 }
 .loh-children{
-  border-top: 10px solid;
+  border-top: 1.5vh solid;
   border-right: 10px solid transparent;
   width:50%;
-  margin-top:-10px;
+  margin-top:-1.5vh;
 }
 .rank-card-top-left{
   text-align:left;
   width:50%;
   height:100%;
+  font-size: 1.2vw;
 }
 .rank-card-top-right{
   text-align: right;
   width:50%;
   height:100%;
+  font-size: 1.2vw;
 }
 .left-color-settings-card{
   width:50%;
@@ -234,6 +236,7 @@ input::-webkit-inner-spin-button {
   border: 2px groove rgb(100, 100, 250);
 }
 .commands-block{
+  vertical-align: top;
   border: 2px groove black;
  display: inline-block;
  margin:25px;
@@ -242,12 +245,20 @@ input::-webkit-inner-spin-button {
 }
 .commands-block-container{
   overflow-y: auto;
-  max-height:505px;
+  max-height:85vh;
  
 }
 .commands-opisanie{
   border-top: 1px groove rgb(100, 100, 250);
   border-bottom: 1px groove rgb(100, 100, 250);
+  height:70%;
+  margin-top:5px;
+  text-align:center;
+  align-items: center;
+  display: flex;
+}
+.commands-opisanie-no-border-bottom{
+  border-top: 1px groove rgb(100, 100, 250);
   height:70%;
   margin-top:5px;
   text-align:center;
@@ -345,8 +356,8 @@ input:checked + .slider-minimal:before {
   display: flex;
 }
 .icon-question-background{
-  height: 3vmin;
-  width: 3vmin;
+  height: 18px;
+  width: 18px;
   background-color: rgb(48, 56, 70);
   border-radius: 200px;
   border-top: 2px groove grey;
@@ -356,11 +367,11 @@ input:checked + .slider-minimal:before {
   cursor: pointer;
   -webkit-transition: -webkit-transform .8s ease-in-out;
           transition:         transform .8s ease-in-out;
-          text-align: center;
 }
 .icon-question{
-  height: 2vmin;
-  width: 2vmin;
+  padding-left:3px;
+  height: 14px;
+  width: 14px;
   color:white;
 }
 .icon-question-background:hover{
@@ -463,6 +474,16 @@ input:checked + .slider-minimal:before {
   color:white;
   background-color: rgb(27, 28, 44);
 }
+.textarea-edit-commands-embed{
+  resize: none;
+  outline: none;
+  margin-top: 20px;
+  margin-left:20px;
+  width:90%;
+  height:200px;
+  color:white;
+  background-color: rgb(27, 28, 44);
+}
 .knopka-toggle-picker-color{
   background-color: rgb(58, 58, 250);
   color:white;
@@ -532,7 +553,81 @@ input:checked + .slider-minimal:before {
   outline: none;
   cursor: pointer;
 }
+.width-icon{
+  width:45%;
+}
+.width-date{
+  width:40%;
+}
+.width-name{
+  width:66.5%;
+}
+.save-button{
+  color:white;
+  background-color: rgb(35, 248, 35);
+  cursor: pointer;
+  outline:none;
+  border:none;
+  width:200px;
+  height:30px;
+  margin-top: 20px;
+}
+.save-button:hover{
+  color:rgb(109, 204, 199);
+  background-color: rgb(3, 207, 3);
+}
 @media (max-width: 850px) {
+  .textarea-edit-commands-embed{
+    resize: none;
+    outline: none;
+    margin-top: 20px;
+    margin-left:10px;
+    width:90%;
+    height:200px;
+    color:white;
+    background-color: rgb(27, 28, 44);
+  }
+  .knopka-toggle-picker-color{
+    background-color: rgb(58, 58, 250);
+    color:white;
+    width:50%;
+    outline: none;
+    cursor:pointer;
+    font-size: 20px;
+    height:30px;
+    border-radius: 5px;
+    border: none;
+  }
+  .input-type-text{
+    color:white;
+    background-color: rgb(27, 28, 44);
+    outline:none;
+    border-radius: 5px;
+    margin-top: 0;
+    height:30px;
+    width:90%;
+  }
+  .settings-command-edit{
+    width:100%;
+    height:100%;
+  }
+  .settings-command-edit-top{
+    max-width:100%;
+    height:5%;
+    background-color:rgb(20, 82, 117);
+    padding-top:10px;
+    padding-left:20px;
+    text-align: left;
+  }
+  .settings-command-edit-bottom{
+    
+    max-width:100%;
+    height:95%;
+    background-color: rgb(10, 32, 44);
+    border: 2px groove black;
+    overflow-y: auto;
+    text-align: left;
+  }
   .Dashboard-left{
     display: none;
   }

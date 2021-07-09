@@ -1,0 +1,189 @@
+table {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 14px;
+    border-collapse: collapse;
+    text-align: center;
+    width:70vw;
+    }
+    td{
+        border-style: solid;
+        border-width: 0px 1px 0px 1px;
+        border-color: white;
+    }
+    td:last-child {
+    border-right-color: #2796f7;
+    border-left-color: #2796f7;
+    color: white;
+    padding: 10px 20px;
+    }
+    th:last-child{
+    border-color: #2796f7;
+    background: #2796f7;
+    color: white;
+    padding: 10px 20px;
+    }
+    th {
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-top-color: white;
+    border-bottom-color: white;
+    border-left-color: white;
+    }
+    th:first-child, td:first-child {
+    text-align: left;
+    padding-left:20px;
+    }
+    .center{
+        border-right-color: #2796f7;
+    }
+    .last{
+        border-bottom:1px solid white;
+    }
+    .last-right{
+        border-bottom:1px solid #2796f7;
+    }
+    .center-last{
+        border-right-color: #2796f7;
+        border-bottom:1px solid white;
+    }
+    .tr:hover{
+        background: #2796f794;
+    }
+    .donate-premium{
+        width:70vw;
+        height:250px;
+        border:1px solid white;
+        display:flex;
+        margin-bottom:20px;
+    }
+    .donate-left{
+        width:20%;
+        border-right: 2px solid white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .donate-premium-right{
+        width:70vw;
+        border:1px solid white;
+    }
+    .qiwi-block{
+        background: white;
+        width:200px;
+        height: 50px;
+        border: 2px solid rgb(248, 188, 75);
+        display:flex;
+    }
+    .youmoney-block{
+        margin-left: 20px;
+        background: white;
+        width:200px;
+        height: 50px;
+        border: 2px solid purple;
+        display:flex;
+    }
+    .directly-donate{
+        width:100%;
+        height:100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .directly-left{
+        width:20%;
+    }
+    .directly-right{
+        width:80%;
+        height: 100%;
+        color:black;
+        font-size: 10px;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .button-youmoney{
+        cursor:pointer;
+        background-color: purple;
+        outline: none;
+    }
+    .button-qiwi{
+        cursor:pointer;
+        background-color: rgb(248, 188, 75);
+        outline: none;
+    }
+    .button-donate{
+        width:100%;
+        height:40px;
+        outline: none;
+        border: none;
+        cursor:pointer;
+        color:white;
+        background-color: #282c34;
+        text-align: left;
+    }
+    .button-donate-active{
+        width:100%;
+        height:40px;
+        outline: none;
+        border: none;
+        cursor:pointer;
+        color:white;
+        background-color: rgb(14, 143, 218);
+        text-align: left;
+    }
+    .button-donate:hover{
+        background-color: rgba(14, 143, 218, 0.801)
+    }
+    .boosty-donate{
+        width:100%;
+    }
+    .boosty-block{
+        background: white;
+        width:200px;
+        height: 50px;
+        border: 2px solid rgb(248, 151, 39);
+        display:flex;
+    }
+    .button-boosty{
+        cursor:pointer;
+        background-color: rgb(248, 151, 39);
+        outline: none;
+    }
+    .patreon-block{
+        background: white;
+        width:200px;
+        height: 50px;
+        border: 2px solid rgb(196, 49, 49);
+        display:flex;
+    }
+    .button-patreon{
+        cursor:pointer;
+        background-color: rgb(196, 49, 49);
+        outline: none;
+    }
+    .block-more-donate{
+        background-color: white;
+        border-top: 3px solid black;
+        border-bottom: 3px solid black;
+        border-left: 4px solid blue;
+        border-right: 4px solid purple;
+        height:175px;
+        width:600px;
+        color:black;
+    }
+    .paypal-block{
+        background: white;
+        width:200px;
+        height: 50px;
+        border: 2px solid blue;
+        display:flex;
+    }
+    .button-paypal{
+        cursor:pointer;
+        background-color: blue;
+        outline: none;
+    }
